@@ -4,14 +4,14 @@ on:
   - push
 
 jobs:
-  run-shell-commands:
+  run-shell-commands-1:
     runs-on: ubuntu-latest
     steps:
       - name: echo string
         run: echo "Hello"
-  run-windows-commands:
-    runs-on: windows-latest  
-    needs: ["run-shell-commands"]
+  run-shell-commands:
+    runs-on: ubuntu-22.04 
+    needs: ["run-shell-commands-1"]
     steps:
       - name: checkout
         uses: actions/checkout@v1
