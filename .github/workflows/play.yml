@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: echo string
         run: echo "Pay now"
-  terraform-workflow:
+  terraform-workflows:
     runs-on: ubuntu-22.04 
     needs: ["run-shell-commands"]
     steps:
