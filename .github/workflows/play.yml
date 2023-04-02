@@ -7,14 +7,14 @@ env:
   AWS_SECRET_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  run-shell-commands:
+  run-shell-commands-1:
     runs-on: ubuntu-latest
     steps:
       - name: echo string
         run: echo "Pay now"
   terraform-workflows:
     runs-on: ubuntu-22.04 
-    needs: ["run-shell-commands"]
+    needs: ["run-shell-commands-1"]
     steps:
       - name: checkout
         uses: actions/checkout@v1
