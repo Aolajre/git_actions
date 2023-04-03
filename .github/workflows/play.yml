@@ -2,9 +2,10 @@ name: shell commands
 
 on:
   - push
-env:
+/*env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-  AWS_SECRET_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }} */
+
 
 jobs:
   run-shell-commands:
@@ -18,6 +19,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v1
+      - name: Configure AWS credentials 
+        uses: aws-actions/configure-aws-credentials@v1 
+         with: 
+           aws-access-key-id:${{secrets.AWSKEYID }} 
+           aws-secret-access-key:${{secrets.AWSSECRETKEY}} 
+           aws-region: us-west-2
       - name: Set Terraform 
         uses: hashicorp/setup-terraform@v2
         with:
